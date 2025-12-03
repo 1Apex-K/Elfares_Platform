@@ -1,73 +1,45 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    <!-- الفاف ايقون -->
     <link rel="icon" type="image/png" href="download7.png">
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- بوتستراب -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- ملف CSS خارجي -->
     <link rel="stylesheet" href="poor.css">
     <title>منصة الفارس</title>
 </head>
 <body>
-  <!-- ===================================================================================================================================
-   ======================================================================================================================================= -->
-  <!-- الناف بار -->
-<nav class="navbar">
-  <!-- اسم الموقع -->
+  <nav class="navbar">
   <div>
     <span class="navbar-brand">الفارس/</span> <br>
-    <span class="navbar-brand1">ابراهيم عادل</span>
+    <span class="navbar-brand1" id="user-name-display">ابراهيم عادل</span>
   </div>
 
-  <!-- الأزرار -->
   <div class="nav-buttons" id="nav-buttons">
+    <a href="login.html" class="btn">تسجيل دخول</a>
     <a href="regestier.html" class="btn">انشاء حساب</a>
-    <a href="login.html" class="btn">تسجيل الدخول</a>
   </div>
-  <!-- Scroll Line -->
   <div class="scroll-line"></div>
 </nav>
-<!-- نهايه الناف بار -->
- <!-- ===================================================================================================================================
-  ======================================================================================================================================= -->
-
-
-<!-- =========================
-     الهيرو كارد
-========================= -->
 <div class="hero-card" id="page">
-  <!-- قسم النصوص -->
   <div class="card-text">
     <h1>اللغه العربيه بقت اسهل</h1>
     <h2>أستاذ/ إبراهيم عادل - فارس اللغة العربية في مصر</h2>
     <h3>مهمتنا الأساسية رعايتك وحماية وقتك، نوفر لك جميع الدروس من مكانك 
     <br> انضم دلوقتي لعالم الفرسان⬇</h3>
 
-    <!-- الأزرار -->
     <div class="buttons">
-      <a href="regestier.html" class="btn">قم بأنشاء حساب</a>
-      <a href="login.html" class="btn">سجل الان</a>
+      <a href="regestier.html" class="btn">سجل الآن</a>
+      <a href="login.html" class="btn">قم بانشاء حساب</a>
     </div>
   </div>
 
-  <!-- قسم الصورة -->
   <div class="card-image">
     <img src="77.png" alt="صورة توضيحية">
   </div>
 </div>
-<!-- نهاية الهيرو كارد -->
-<!-- ==================================================================================================================================
- ===================================================================================================================================== -->
-
-<!-- =========================
-     قسم "ليه تختار منصه الفارس؟"
-========================= -->
 <section class="features-section" id="features">
         <div class="container">
             <h1>لماذا منصة الفارس؟</h1>
@@ -106,12 +78,6 @@
         </div>
     </section>
 
-<!-- =====================================================================================================================================
- ========================================================================================================================================= -->
-
-<!-- =========================
-     اختيار السنة الدراسية
-========================= -->
 <h1>اختار السنة الدراسية!</h1>
 
 <div class="cards-row">
@@ -142,14 +108,7 @@
     </div>
   </div>
 </div>
-<!-- =====================================================================================================================================
- ========================================================================================================================================= -->
-
-<!-- =========================
-     كارد التفاصيل الكبير
-========================= -->
 <div class="big-card">
-  <!-- القسم الأيسر -->
   <div class="left-side">
     <h1>الفارس/</h1>
     <h2>ابراهيم عادل</h2> 
@@ -163,11 +122,7 @@
    </p>
 
   </div>
-<!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
-
-  <!-- القسم الأيمن -->
-  <div class="right-side">
-    <!-- مجموعة الفقرات الأولى -->
+<div class="right-side">
     <ul class="paragraph-group">
   <h6>الصفحات</h6>
 
@@ -184,13 +139,13 @@
   </li>
 
   <li>
-    <a href="login.html">
+    <a href="regestier.html">
       <i class="fa-solid fa-user-plus"></i> انشاء حساب جديد
     </a>
   </li>
 
   <li>
-    <a href="regestier.html">
+    <a href="login.html">
       <i class="fa-solid fa-right-to-bracket"></i> تسجيل دخول
     </a>
   </li>
@@ -198,9 +153,7 @@
 </ul>
 
 
-    <!-- مجموعة الفقرات الثانية -->
-    <!-- مجموعة الفقرات الثانية -->
-<ul class="paragraph-group">
+    <ul class="paragraph-group">
   <h6>السوشيال ميديا</h6>
 
   <li>
@@ -229,17 +182,94 @@
 </ul>
   </div>
 </div>
-<!-- ========================================================================================================================================
-============================================================================================================================================= -->
-
-
-<!-- =========================
-     جافاسكريبت بوتستراب وملف خارجي
-========================= -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="poor.js"></script>
 <script type="module" src="firebase.js"></script>
 
+<script type="module">
+    // استيراد أدوات Firebase التي تم إعدادها في firebase.js
+    import { firebaseAuth, firebaseDB } from "./firebase.js";
 
+    // استيراد وظائف Firebase Auth و Firestore
+    import { 
+        onAuthStateChanged, 
+        signOut 
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    
+    import { 
+        doc, 
+        getDoc 
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    const userNameDisplay = document.getElementById('user-name-display');
+    const navButtonsContainer = document.getElementById('nav-buttons');
+
+    // دالة مساعدة لتسجيل الخروج
+    const handleLogout = async () => {
+        try {
+            await signOut(firebaseAuth);
+            window.location.reload(); // إعادة تحميل الصفحة لتحديث حالة شريط التنقل
+        } catch (error) {
+            console.error("خطأ في تسجيل الخروج:", error);
+            alert("حدث خطأ أثناء تسجيل الخروج. الرجاء المحاولة مرة أخرى.");
+        }
+    };
+    
+    // ربط زر تسجيل الخروج بالدالة عند الضغط عليه (يتم إنشاؤه ديناميكيًا)
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'logout-btn') {
+            e.preventDefault();
+            handleLogout();
+        }
+    });
+
+    // مراقبة حالة المصادقة (Auth State)
+    onAuthStateChanged(firebaseAuth, async (user) => {
+        if (user) {
+            // المستخدم مسجل دخوله
+            try {
+                // جلب بيانات المستخدم من Firestore باستخدام الـ UID
+                const docRef = doc(firebaseDB, "students", user.uid);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    const firstName = userData.first;
+                    
+                    // تحديث اسم المستخدم في شريط التنقل
+                    userNameDisplay.textContent = firstName; 
+                    
+                    // تحديث أزرار التنقل لعرض زر تسجيل الخروج
+                    navButtonsContainer.innerHTML = `
+                        <a href="#" id="logout-btn" class="btn">تسجيل خروج</a>
+                    `;
+
+                } else {
+                    // في حال كان المستخدم مسجل دخوله ولكن بياناته غير موجودة في Firestore
+                    userNameDisplay.textContent = "طالب مسجل";
+                    navButtonsContainer.innerHTML = `
+                        <a href="#" id="logout-btn" class="btn">تسجيل خروج</a>
+                    `;
+                }
+            } catch (error) {
+                console.error("خطأ في جلب بيانات Firestore:", error);
+                userNameDisplay.textContent = "طالب مسجل";
+                navButtonsContainer.innerHTML = `
+                    <a href="#" id="logout-btn" class="btn">تسجيل خروج</a>
+                `;
+            }
+        } else {
+            // المستخدم غير مسجل دخوله
+            userNameDisplay.textContent = "ابراهيم عادل"; // العودة إلى الاسم الافتراضي
+            
+            // العودة إلى أزرار تسجيل الدخول وإنشاء الحساب (تصحيح الروابط)
+            navButtonsContainer.innerHTML = `
+                <a href="login.html" class="btn">تسجيل دخول</a>
+                <a href="regestier.html" class="btn">انشاء حساب</a>
+            `;
+        }
+    });
+
+</script>
 </body>
 </html>
