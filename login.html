@@ -73,7 +73,8 @@
   </div>
 
   <script src="script.js"></script> <!-- ربط الجافاسكريبت -->
-    <script type="module" src="/auth.js"></script>
+<script type="module" src="firebase.js"></script>
+
 <script type="module">
   import { 
     signInWithEmailAndPassword 
@@ -86,17 +87,19 @@
 
     const mobile = form.mobile.value;
     const password = form.password.value;
+
     const email = mobile + "@elfares.com";
 
     try {
       await signInWithEmailAndPassword(firebaseAuth, email, password);
-      alert("تم تسجيل الدخول !");
+      alert("تم تسجيل الدخول بنجاح!");
       window.location.href = "index.html";
-    } catch (error) {
-      alert(error.message);
+    } catch (err) {
+      alert("خطأ: " + err.message);
     }
   });
 </script>
+
 
 </body>
 </html>

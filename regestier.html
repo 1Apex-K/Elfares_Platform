@@ -181,23 +181,20 @@
       </p>
     </div>
   </div>
-    <script type="module" src="/auth.js"></script>
-<script type="module">
-  import { 
-    createUserWithEmailAndPassword 
-  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+<script type="module" src="firebase.js"></script>
 
-  import { 
-    doc, 
-    setDoc 
-  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+<script type="module">
+  import { createUserWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+  import { doc, setDoc } 
+  from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
   const form = document.querySelector("form");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // اجمع البيانات
     const first = form.first_name.value;
     const second = form.second_name.value;
     const third = form.third_name.value;
@@ -207,22 +204,20 @@
     const grade = form.grade.value;
     const password = form.password.value;
 
-    const email = mobile + "@elfares.com"; // رقم الهاتف كأنه ايميل
+    const email = mobile + "@elfares.com";
 
     try {
-      // 1) إنشاء الحساب
       const user = await createUserWithEmailAndPassword(firebaseAuth, email, password);
 
-      // 2) حفظ البيانات في Firestore
       await setDoc(doc(firebaseDB, "students", user.user.uid), {
-        first_name: first,
-        second_name: second,
-        third_name: third,
-        fourth_name: fourth,
-        mobile: mobile,
-        parent_mobile: parent,
-        grade: grade,
-        azhari: form.azhari.checked,
+        first,
+        second,
+        third,
+        fourth,
+        mobile,
+        parent,
+        grade,
+        azhari: form.azhari?.checked ?? false,
         createdAt: new Date()
       });
 
@@ -234,5 +229,6 @@
     }
   });
 </script>
+
 </body>
 </html>
