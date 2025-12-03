@@ -1,0 +1,232 @@
+/* auth.css */
+
+/* «· ‰”Ìﬁ«  «·√”«”Ì… */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  /* ÌÃ» √‰ ÌﬂÊ‰ ·œÌﬂ „·› 'oo.jfif' ›Ì ‰›” «·„Ã·œ */
+  background: url('oo.jfif') no-repeat center center fixed;
+  background-size: cover;
+  direction: rtl;
+  overflow-y: auto; /* «·”„«Õ »«· „—Ì— «·—√”Ì ··‘«‘«  «·’€Ì—… */
+  min-height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* «· √ﬂœ „‰ √‰ «·Õ«ÊÌ…  „·√ «·‘«‘… »«·ﬂ«„· */
+  padding: 20px 10px; /* ≈÷«›… „”«›… »«œ∆… ··Õ„«Ì… ⁄·Ï «·√ÃÂ“… «·’€Ì—… */
+  box-sizing: border-box;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%; /* √’»Õ 100% ·„·¡ «·„”«Õ… «·„ «Õ… Õ Ï 400px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  transition: all 0.4s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px); /*  ﬁ·Ì· «·Õ—ﬂ… ·⁄œ„ «· ‘ Ì  */
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.login-card img {
+  width: 100px; /*  ﬁ·Ì· «·ÕÃ„ ﬁ·Ì·« */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s;
+}
+
+.login-card img:hover {
+  transform: scale(1.05);
+}
+
+.login-card h2 {
+  margin: 0 0 15px 0;
+  color: orange;
+  font-size: 28px; /*  ’€Ì— «·Œÿ ﬁ·Ì·« */
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.login-card p.intro {
+  color: #fff;
+  font-size: 15px;
+  margin: 5px 0 10px 0;
+  text-align: center;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 15px; /*  ﬁ·Ì· «·„”«›… »Ì‰ «·ÕﬁÊ· */
+}
+
+/*  ‰”Ìﬁ ÕﬁÊ· «·≈œŒ«· */
+.login-card input[type="tel"],
+.login-card input[type="password"],
+.login-card input[type="text"],
+.login-card select {
+  width: 100%;
+  padding: 12px 12px; /*  ﬁ·Ì· «·‹ padding ﬁ·Ì·« */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px; /*  ﬁ·Ì· «·‹ border-radius ﬁ·Ì·« */
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 15px;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s;
+  direction: rtl;
+}
+
+.login-card select option {
+  background-color: #333;
+  color: #fff;
+}
+
+.login-card input:focus,
+.login-card select:focus {
+  outline: none;
+  border: 1px solid orange;
+  box-shadow: 0 0 8px orange; /*  ﬁ·Ì· «·‹ shadow ﬁ·Ì·« */
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.login-card input::placeholder {
+  color: #eee;
+}
+
+/*  ‰”Ìﬁ ÕﬁÊ· «·«”„ (Flex) */
+.flex-inputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.flex-inputs input[type="text"] {
+  flex: 1;
+  min-width: 0;
+}
+
+/*  ‰”Ìﬁ «·‹ checkbox */
+.checkbox-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 15px;
+  padding-right: 5px;
+}
+
+.checkbox-group label {
+  cursor: pointer;
+  margin-right: 10px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  user-select: none; /* ·„‰⁄  ÕœÌœ «·‰’ */
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 16px; /*  ’€Ì— ÕÃ„ «·‹ checkbox ﬁ·Ì·« */
+  height: 16px;
+  cursor: pointer;
+}
+
+/*  ‰”Ìﬁ «·“—«— */
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  /* «·Œ·›Ì… ÂÌ ’Ê—… «·‹ body ‰›”Â« · »œÊ „„Ì“… */
+  background: url('oo.jfif') no-repeat center center;
+  background-size: cover;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.login-card button:hover {
+  background-color: rgba(255, 165, 0, 0.8);
+  box-shadow: 0 0 10px orange, 0 0 20px rgba(255, 165, 0, 0.5);
+  color: #fff;
+  background-image: none; /* ≈·€«¡ «·Œ·›Ì… ⁄‰œ «·‹ hover */
+}
+
+.login-card .register-link {
+  margin-top: 15px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.login-card .register-link a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.login-card .register-link a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px orange;
+}
+
+/* ======================================= */
+/* Media Query ·· Ã«Ê» ⁄·Ï «·‘«‘«  «·’€Ì—… */
+/* ======================================= */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px 15px; /*  ﬁ·Ì· «·„”«›… «·œ«Œ·Ì… ··»ÿ«ﬁ… */
+    margin: 10px; /* ≈÷«›… Â«„‘ Œ«—ÃÌ »”Ìÿ */
+  }
+
+  .login-card h2 {
+    font-size: 24px;
+  }
+
+  .login-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+
+  .flex-inputs {
+    flex-direction: column; /* Ã⁄· ÕﬁÊ· «·«”„  ŸÂ—  Õ  »⁄÷Â« */
+    gap: 0; /* ≈·€«¡ «·„”«›… «·√›ﬁÌ… »Ì‰ «·ÕﬁÊ· */
+  }
+  
+  /* ≈÷«›… „”«›… »Ì‰ ÕﬁÊ· «·«”„ ⁄‰œ «·‹ column */
+  .flex-inputs input[type="text"]:not(:last-child) {
+      margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 350px) {
+    .login-card {
+        padding: 20px 10px;
+    }
+}

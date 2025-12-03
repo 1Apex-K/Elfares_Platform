@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تسجيل دخول - عالم الفرسان</title>
-  <link rel="stylesheet" href="log.css"> <!-- ربط ملف CSS -->
-</head>
+  <link rel="stylesheet" href="auth.css"> </head>
 <body>
   <div class="login-container">
     <div class="login-card">
@@ -16,48 +15,15 @@
       <p class="intro">ابدأ دلوقتي يلا معانا ⬇</p>
 
       <form action="/login" method="post">
-        <!-- أسماء الأربعة -->
-        <div class="flex-inputs">
-          <input type="text" name="first_name" placeholder="الاسم الأول">
-          <input type="text" name="second_name" placeholder="الاسم الثاني">
-        </div>
-        <div class="flex-inputs">
-          <input type="text" name="third_name" placeholder="الاسم الثالث">
-          <input type="text" name="fourth_name" placeholder="الاسم الرابع">
-        </div>
-
-        <!-- السنة الدراسية -->
+        
         <div class="input-group">
-          <select name="grade">
-            <option value="" disabled selected>اختر السنة الدراسية</option>
-            <option value="1">أولى ثانوي</option>
-            <option value="2">ثانية ثانوي</option>
-            <option value="3">ثالثة ثانوي</option>
-          </select>
+          <input type="tel" name="mobile" placeholder="رقم الموبايل" pattern="[0-9]*" inputmode="numeric" required>
         </div>
 
-        <!-- تشيك بوكس -->
-        <div class="checkbox-group">
-          <input type="checkbox" id="azhari" name="azhari">
-          <label for="azhari">هل أنت طالب أزهري</label>
-        </div>
-
-        <!-- رقم موبايل ولي الأمر -->
         <div class="input-group">
-          <input type="tel" name="parent_mobile" placeholder="رقم موبايل ولي الأمر" pattern="[0-9]*" inputmode="numeric">
+          <input type="password" name="password" placeholder="كلمة المرور" id="password" required>
         </div>
 
-        <!-- رقم موبايل الطالب -->
-        <div class="input-group">
-          <input type="tel" name="mobile" placeholder="رقم الموبايل" pattern="[0-9]*" inputmode="numeric">
-        </div>
-
-        <!-- كلمة المرور -->
-        <div class="input-group">
-          <input type="password" name="password" placeholder="كلمة المرور" id="password">
-        </div>
-
-        <!-- تشيك بوكس اظهار كلمة المرور -->
         <div class="checkbox-group">
           <input type="checkbox" id="show_password">
           <label for="show_password">إظهار كلمة المرور</label>
@@ -67,42 +33,74 @@
       </form>
 
       <p class="register-link">
-        لا تمتلك حساب؟ <a href="#">أنشئ حساب</a>
+        لا تمتلك حساب؟ <a href="regestier.html">أنشئ حساب</a>
       </p>
     </div>
   </div>
 
-  <script src="script.js"></script> <!-- ربط الجافاسكريبت -->
-<script type="module" src="firebase.js"></script>
+  <script>
+    const passwordInput = document.getElementById('password');
+    const showPasswordCheckbox = document.getElementById('show_password');
 
-<script type="module">
-  // تم تعديل الاستيراد ليصبح:
-  import { firebaseAuth } from "./firebase.js";
-
-  import { 
-    signInWithEmailAndPassword 
-  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-
-  const form = document.querySelector("form");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const mobile = form.mobile.value;
-    const password = form.password.value;
-
-    const email = mobile + "@elfares.com";
-
-    try {
-      await signInWithEmailAndPassword(firebaseAuth, email, password); // استخدام firebaseAuth
-      alert("تم تسجيل الدخول بنجاح!");
-      window.location.href = "index.html";
-    } catch (err) {
-      alert("خطأ: " + err.message);
+    if (showPasswordCheckbox && passwordInput) {
+      showPasswordCheckbox.addEventListener('change', () => {
+        if (showPasswordCheckbox.checked) {
+          passwordInput.type = 'text';
+        } else {
+          passwordInput.type = 'password';
+        }
+      });
     }
-  });
-</script>
+  </script>
+  
+  <script type="module" src="firebase.js"></script>
 
+  <script type="module">
+    // يتم استيراد الأدوات من firebase.js الذي قمت بإعداده
+    import { firebaseAuth } from "./firebase.js"; 
+
+    import { 
+      signInWithEmailAndPassword 
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const mobile = form.mobile.value;
+      const password = form.password.value;
+
+      // التأكد من وجود قيمة في حقول الموبايل وكلمة المرور
+      if (!mobile || !password) {
+        alert("الرجاء إدخال رقم الموبايل وكلمة المرور.");
+        return;
+      }
+      
+      // تحويل رقم الموبايل إلى صيغة بريد إلكتروني للدخول في Firebase Auth
+      const email = mobile + "@elfares.com";
+
+      try {
+        await signInWithEmailAndPassword(firebaseAuth, email, password);
+        alert("تم تسجيل الدخول بنجاح!");
+        window.location.href = "index.html"; // التوجيه إلى الصفحة الرئيسية
+      } catch (err) {
+        // تحسين رسائل الخطأ
+        let errorMessage = "حدث خطأ غير متوقع.";
+        if (err.code === 'auth/invalid-credential') {
+            errorMessage = "بيانات تسجيل الدخول غير صحيحة (رقم الموبايل أو كلمة المرور).";
+        } else if (err.code === 'auth/wrong-password') {
+            errorMessage = "كلمة المرور غير صحيحة.";
+        } else if (err.code === 'auth/user-not-found') {
+            errorMessage = "لا يوجد حساب مسجل بهذا الرقم.";
+        } else {
+            errorMessage = "خطأ: " + err.message;
+        }
+        
+        alert(errorMessage);
+      }
+    });
+  </script>
 
 </body>
 </html>
