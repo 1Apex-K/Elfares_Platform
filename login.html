@@ -76,6 +76,9 @@
 <script type="module" src="firebase.js"></script>
 
 <script type="module">
+  // تم تعديل الاستيراد ليصبح:
+  import { firebaseAuth } from "./firebase.js";
+
   import { 
     signInWithEmailAndPassword 
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
@@ -91,7 +94,7 @@
     const email = mobile + "@elfares.com";
 
     try {
-      await signInWithEmailAndPassword(firebaseAuth, email, password);
+      await signInWithEmailAndPassword(firebaseAuth, email, password); // استخدام firebaseAuth
       alert("تم تسجيل الدخول بنجاح!");
       window.location.href = "index.html";
     } catch (err) {
