@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل دخول - عالم الفرسان</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('oo.jfif') no-repeat center center fixed;
+      background-size: cover;
+      direction: rtl;
+      overflow: hidden;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 30px;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+      transition: all 0.4s ease;
+    }
+
+    .login-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 50px rgba(0,0,0,0.8);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .login-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s;
+    }
+
+    .login-card img:hover {
+      transform: scale(1.1);
+    }
+
+    .login-card h2 {
+      margin: 0 0 15px 0;
+      color: orange;
+      font-size: 30px;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .login-card p.intro {
+      color: #fff;
+      font-size: 16px;
+      margin: 5px 0 15px 0;
+      text-align: center;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .input-group {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .login-card input[type="tel"],
+    .login-card input[type="password"] {
+      width: 100%;
+      padding: 14px 12px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 16px;
+      box-sizing: border-box;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s;
+      direction: rtl;
+    }
+
+    .login-card input[type="tel"]:focus,
+    .login-card input[type="password"]:focus {
+      outline: none;
+      border: 1px solid orange;
+      box-shadow: 0 0 10px orange;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .login-card input::placeholder {
+      color: #eee;
+    }
+
+    /* --- الزرار بخلفية الصورة --- */
+    .login-card button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      background: url('oo.jfif') no-repeat center center;
+      background-size: cover;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 12px;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .login-card button:hover {
+      background-color: rgba(255,165,0,0.8); /* تأثير hover برتقالي */
+      box-shadow: 0 0 15px orange, 0 0 30px rgba(255,165,0,0.5);
+      color: #fff;
+    }
+
+    .login-card .register-link {
+      margin-top: 15px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .login-card .register-link a {
+      color: #00bfff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .login-card .register-link a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 5px orange;
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <!-- اللوجو -->
+      <img src="reg.jpeg" alt="Logo">
+      <h2>عالم الفرسان</h2>
+
+      <p class="intro">اهلا بيك ف عالم الفرسان</p>
+      <p class="intro">ابدأ دلوقتي يلا معانا ⬇</p>
+
+      <!-- الفورم -->
+      <form action="/login" method="post">
+        <div class="input-group">
+          <input type="tel" name="mobile" placeholder="رقم الموبايل" pattern="[0-9]*" inputmode="numeric">
+        </div>
+
+        <div class="input-group">
+          <input type="password" name="password" placeholder="كلمة المرور" id="password">
+        </div>
+
+        <button type="submit">تسجيل الدخول</button>
+      </form>
+
+      <p class="register-link">
+        لا تمتلك حساب؟ <a href="#">أنشئ حساب</a>
+      </p>
+    </div>
+  </div>
+    <script type="module" src="/auth.js"></script>
+<script type="module">
+  import { 
+    createUserWithEmailAndPassword 
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+  import { 
+    doc, 
+    setDoc 
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // اجمع البيانات
+    const first = form.first_name.value;
+    const second = form.second_name.value;
+    const third = form.third_name.value;
+    const fourth = form.fourth_name.value;
+    const mobile = form.mobile.value;
+    const parent = form.parent_mobile.value;
+    const grade = form.grade.value;
+    const password = form.password.value;
+
+    const email = mobile + "@elfares.com"; // رقم الهاتف كأنه ايميل
+
+    try {
+      // 1) إنشاء الحساب
+      const user = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+
+      // 2) حفظ البيانات في Firestore
+      await setDoc(doc(firebaseDB, "students", user.user.uid), {
+        first_name: first,
+        second_name: second,
+        third_name: third,
+        fourth_name: fourth,
+        mobile: mobile,
+        parent_mobile: parent,
+        grade: grade,
+        azhari: form.azhari.checked,
+        createdAt: new Date()
+      });
+
+      alert("تم إنشاء الحساب بنجاح!");
+      window.location.href = "login.html";
+
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+</script>
+</body>
+</html>

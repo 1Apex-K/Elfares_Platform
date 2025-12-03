@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل دخول - عالم الفرسان</title>
+  <link rel="stylesheet" href="log.css"> <!-- ربط ملف CSS -->
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <img src="log.jpeg" alt="Logo">
+      <h2>عالم الفرسان</h2>
+
+      <p class="intro">اهلا بيك ف عالم الفرسان</p>
+      <p class="intro">ابدأ دلوقتي يلا معانا ⬇</p>
+
+      <form action="/login" method="post">
+        <!-- أسماء الأربعة -->
+        <div class="flex-inputs">
+          <input type="text" name="first_name" placeholder="الاسم الأول">
+          <input type="text" name="second_name" placeholder="الاسم الثاني">
+        </div>
+        <div class="flex-inputs">
+          <input type="text" name="third_name" placeholder="الاسم الثالث">
+          <input type="text" name="fourth_name" placeholder="الاسم الرابع">
+        </div>
+
+        <!-- السنة الدراسية -->
+        <div class="input-group">
+          <select name="grade">
+            <option value="" disabled selected>اختر السنة الدراسية</option>
+            <option value="1">أولى ثانوي</option>
+            <option value="2">ثانية ثانوي</option>
+            <option value="3">ثالثة ثانوي</option>
+          </select>
+        </div>
+
+        <!-- تشيك بوكس -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="azhari" name="azhari">
+          <label for="azhari">هل أنت طالب أزهري</label>
+        </div>
+
+        <!-- رقم موبايل ولي الأمر -->
+        <div class="input-group">
+          <input type="tel" name="parent_mobile" placeholder="رقم موبايل ولي الأمر" pattern="[0-9]*" inputmode="numeric">
+        </div>
+
+        <!-- رقم موبايل الطالب -->
+        <div class="input-group">
+          <input type="tel" name="mobile" placeholder="رقم الموبايل" pattern="[0-9]*" inputmode="numeric">
+        </div>
+
+        <!-- كلمة المرور -->
+        <div class="input-group">
+          <input type="password" name="password" placeholder="كلمة المرور" id="password">
+        </div>
+
+        <!-- تشيك بوكس اظهار كلمة المرور -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="show_password">
+          <label for="show_password">إظهار كلمة المرور</label>
+        </div>
+
+        <button type="submit">تسجيل الدخول</button>
+      </form>
+
+      <p class="register-link">
+        لا تمتلك حساب؟ <a href="#">أنشئ حساب</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script> <!-- ربط الجافاسكريبت -->
+    <script type="module" src="/auth.js"></script>
+<script type="module">
+  import { 
+    signInWithEmailAndPassword 
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const mobile = form.mobile.value;
+    const password = form.password.value;
+    const email = mobile + "@elfares.com";
+
+    try {
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+      alert("تم تسجيل الدخول !");
+      window.location.href = "index.html";
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+</script>
+
+</body>
+</html>
